@@ -4,6 +4,10 @@ public class IntegerParser implements NumberParser<Integer> {
 
 	@Override
 	public Integer parseNumber(String number) {
-		return 0;
+		try {
+			return Integer.parseInt(number);
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException("[ERROR] 정수 형태의 문자만 변환이 가능합니다.");
+		}
 	}
 }
