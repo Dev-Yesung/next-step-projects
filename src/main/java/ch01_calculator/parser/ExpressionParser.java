@@ -1,8 +1,8 @@
 package ch01_calculator.parser;
 
-import java.util.List;
+import ch01_calculator.dto.ParsedExpressions;
 
 public interface ExpressionParser {
 
-	List<String> parseExpression(String expression);
+	ParsedExpressions parse(String expression);
 }

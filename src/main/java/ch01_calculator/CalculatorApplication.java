@@ -9,7 +9,7 @@ import ch01_calculator.operation.Operation;
 import ch01_calculator.parser.ExpressionParser;
 import ch01_calculator.parser.IntegerParser;
 import ch01_calculator.parser.NumberParser;
-import ch01_calculator.parser.SequentialExpressionParser;
+import ch01_calculator.parser.SequentialExpressionIntegerParser;
 
 public class CalculatorApplication {
 
@@ -17,9 +17,9 @@ public class CalculatorApplication {
 		InputHandler inputHandler = new ConsoleInputHandler();
 		OutputHandler outputHandler = new ConsoleOutputHandler();
 		Operation<Integer, Integer> operation = new IntegerOperation();
-		ExpressionParser expressionParser = new SequentialExpressionParser();
 		NumberParser<Integer> numberParser = new IntegerParser();
-		Processor processor = new Processor(inputHandler, outputHandler, operation, expressionParser, numberParser);
+		ExpressionParser expressionParser = new SequentialExpressionIntegerParser(numberParser);
+		Processor processor = new Processor(inputHandler, outputHandler, operation, expressionParser);
 
 		processor.run();
 	}
