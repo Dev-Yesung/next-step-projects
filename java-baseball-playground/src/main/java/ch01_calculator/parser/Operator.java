@@ -20,8 +20,12 @@ public enum Operator {
 	}
 
 	public static void validate(String symbol) {
-		Optional.ofNullable(stringToEnumMap.get(symbol))
-			.orElseThrow(() -> new RuntimeException("[ERROR] 지원하지 않는 연산자입니다."));
+		resolve(symbol);
+	}
+
+	public static Operator resolve(String symbol) {
+		return Optional.ofNullable(stringToEnumMap.get(symbol))
+			.orElseThrow(() -> new RuntimeException("지원하지 않는 연산자입니다."));
 	}
 
 	public String getSymbol() {

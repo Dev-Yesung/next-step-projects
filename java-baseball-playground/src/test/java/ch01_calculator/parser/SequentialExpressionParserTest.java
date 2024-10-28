@@ -14,15 +14,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import ch01_calculator.dto.ParsedExpressions;
 
-class SequentialExpressionIntegerParserTest {
+class SequentialExpressionParserTest {
 
-	private ExpressionParser expressionParser;
-
-	@BeforeEach
-	void setUp() {
-		NumberParser<Integer> numberParser = new IntegerParser();
-		expressionParser = new SequentialExpressionIntegerParser(numberParser);
-	}
+	private ExpressionParser expressionParser = new SequentialExpressionParser();
 
 	@DisplayName("형식에 맞는 올바른 연산식이 들어왔을 경우 순차적인 파싱에 성공한다.")
 	@MethodSource("provideExpressionAndExpectedValue")
@@ -60,19 +54,21 @@ class SequentialExpressionIntegerParserTest {
 
 	private static Stream<Arguments> provideExpressionAndExpectedValue() {
 		return Stream.of(
-			Arguments.of("3 + 4", new ParsedExpressions(List.of("+"), List.of(3, 4))),
-			Arguments.of("3 + 4 + 5", new ParsedExpressions(List.of("+", "+"), List.of(3, 4, 5))),
-			Arguments.of("30 + 4 + -5", new ParsedExpressions(List.of("+", "+"), List.of(30, 4, -5))),
-			Arguments.of("30 - 4 + -5", new ParsedExpressions(List.of("-", "+"), List.of(30, 4, -5))),
-			Arguments.of("30 - 4 + -5 * 0", new ParsedExpressions(List.of("-", "+", "*"), List.of(30, 4, -5, 0))),
+			Arguments.of("3 + 4", new ParsedExpressions(List.of("+"), List.of("3", "4"))),
+			Arguments.of("3 + 4 + 5", new ParsedExpressions(List.of("+", "+"), List.of("3", "4", "5"))),
+			Arguments.of("30 + 4 + -5", new ParsedExpressions(List.of("+", "+"), List.of("30", "4", "-5"))),
+			Arguments.of("30 - 4 + -5", new ParsedExpressions(List.of("-", "+"), List.of("30", "4", "-5"))),
+			Arguments.of("30 - 4 + -5 * 0",
+				new ParsedExpressions(List.of("-", "+", "*"), List.of("30", "4", "-5", "0"))),
 			Arguments.of("30 - 4 + -5 * 0 / 20",
-				new ParsedExpressions(List.of("-", "+", "*", "/"), List.of(30, 4, -5, 0, 20))),
+				new ParsedExpressions(List.of("-", "+", "*", "/"), List.of("30", "4", "-5", "0", "20"))),
 			Arguments.of("30 - 4 + -5 * 0 / 20 / -20",
-				new ParsedExpressions(List.of("-", "+", "*", "/", "/"), List.of(30, 4, -5, 0, 20, -20))),
+				new ParsedExpressions(List.of("-", "+", "*", "/", "/"), List.of("30", "4", "-5", "0", "20", "-20"))),
 			Arguments.of("30 - 4 + -5 * 0 / 20 / -20",
-				new ParsedExpressions(List.of("-", "+", "*", "/", "/"), List.of(30, 4, -5, 0, 20, -20))),
+				new ParsedExpressions(List.of("-", "+", "*", "/", "/"), List.of("30", "4", "-5", "0", "20", "-20"))),
 			Arguments.of("30 - 4 + -5 * 0 / 20 / -20 * -20",
-				new ParsedExpressions(List.of("-", "+", "*", "/", "/", "*"), List.of(30, 4, -5, 0, 20, -20, -20)))
+				new ParsedExpressions(List.of("-", "+", "*", "/", "/", "*"),
+					List.of("30", "4", "-5", "0", "20", "-20", "-20")))
 		);
 	}
 }

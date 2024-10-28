@@ -4,6 +4,6 @@ import java.util.List;
 
 public record ParsedExpressions(
 	List<String> operatorSymbols,
-	List<? extends Number> numbers
+	List<String> numbers
 ) {
 }

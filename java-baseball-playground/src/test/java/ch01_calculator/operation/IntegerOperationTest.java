@@ -82,7 +82,7 @@ class IntegerOperationTest {
 	@DisplayName("정수 나눗셈 성공 테스트")
 	@MethodSource("provideNumbersAndExpectedNumberForDivide")
 	@ParameterizedTest
-	void success_divide(Integer leftNumber, Integer rightNumber, Double expected) {
+	void success_divide(Integer leftNumber, Integer rightNumber, Integer expected) {
 		// when
 		var output = integerOperation.divide(leftNumber, rightNumber);
 
@@ -135,16 +135,16 @@ class IntegerOperationTest {
 
 	private static Stream<Arguments> provideNumbersAndExpectedNumberForDivide() {
 		return Stream.of(
-			Arguments.of(0, 10, 0.00),
-			Arguments.of(0, 100, 0.00),
-			Arguments.of(100, 5, 20.00),
-			Arguments.of(100, 3, 33.33),
-			Arguments.of(100, 6, 16.67),
-			Arguments.of(131, 3, 43.67),
-			Arguments.of(133, 3, 44.33),
-			Arguments.of(-133, 3, -44.33),
-			Arguments.of(133, -3, -44.33),
-			Arguments.of(-133, -3, 44.33));
+			Arguments.of(0, 10, 0),
+			Arguments.of(0, 100, 0),
+			Arguments.of(100, 5, 20),
+			Arguments.of(100, 3, 33),
+			Arguments.of(100, 6, 16),
+			Arguments.of(131, 3, 43),
+			Arguments.of(133, 3, 44),
+			Arguments.of(-133, 3, -44),
+			Arguments.of(133, -3, -44),
+			Arguments.of(-133, -3, 44));
 	}
 
 	private static Stream<Arguments> provideNumbersOverIntegerRangeForPlus() {

@@ -8,5 +8,5 @@ public interface Operation<T extends Number, R extends Number> {
 
 	R multiply(T leftNumber, T rightNumber);
 
-	Double divide(T leftNumber, T rightNumber);
+	R divide(T leftNumber, T rightNumber);
 }
