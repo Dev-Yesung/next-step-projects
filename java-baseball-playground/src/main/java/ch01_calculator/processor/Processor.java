@@ -2,16 +2,11 @@ package ch01_calculator.processor;
 
 import static ch01_calculator.text.InfoText.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import ch01_calculator.dto.ParsedExpressions;
 import ch01_calculator.executor.CalculationExecutor;
 import ch01_calculator.hanlder.input.InputHandler;
 import ch01_calculator.hanlder.output.OutputHandler;
-import ch01_calculator.operation.Operation;
 import ch01_calculator.parser.ExpressionParser;
-import ch01_calculator.parser.Operator;
 
 public class Processor {
 
@@ -38,7 +33,7 @@ public class Processor {
 
 				switch (mode) {
 					case Mode.SIMPLE_CALCULATOR -> {
-						outputHandler.displayMessage(COMMAND_ENTER_MESSAGE);
+						outputHandler.displayMessage(EXPRESSION_ENTER_MESSAGE);
 						final String expression = inputHandler.readInput();
 						final ParsedExpressions parsedExpressions = expressionParser.parse(expression);
 						final String output = calculationExecutor.calculate(parsedExpressions);

@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public enum Mode {
 
-	SIMPLE_CALCULATOR(1, SIMPLE_CALCULATOR_MODE_SELECT_MESSAGE, true),
+	SIMPLE_CALCULATOR(1, CALCULATOR_MODE_SELECT_MESSAGE, true),
 	END(0, END_MODE_SELECT_MESSAGE, false);
 
 	private static final Map<Integer, Mode> valueToEnum = Arrays.stream(values())

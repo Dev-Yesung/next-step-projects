@@ -9,7 +9,7 @@ public final class InfoText {
 		0. 종료하기
 		1. 간단 사칙연산 계산기
 		""";
-	public static final String SIMPLE_CALCULATOR_MODE_SELECT_MESSAGE = """
+	public static final String CALCULATOR_MODE_SELECT_MESSAGE = """
 		간편 사칙연산 계산기를 선택하셨습니다.
 		현재 지원되는 연산은 +, - , *, / 입니다.
 		연산자 우선순위에 상관없이 입력된 순서대로 계산합니다.
@@ -19,5 +19,5 @@ public final class InfoText {
 		Java 계산기를 종료합니다...
 		""";
 
-	public static final String COMMAND_ENTER_MESSAGE = "식을 입력해주세요 : ";
+	public static final String EXPRESSION_ENTER_MESSAGE = "식을 입력해주세요 : ";
 }
