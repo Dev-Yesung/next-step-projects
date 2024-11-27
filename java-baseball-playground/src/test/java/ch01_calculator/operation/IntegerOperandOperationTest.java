@@ -11,8 +11,11 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import ch01_calculator.domain.operation.Operation;
+import ch01_calculator.domain.operation.IntegerOperation;
+
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
-class IntegerOperationTest {
+class IntegerOperandOperationTest {
 
 	private final Operation<Integer, Integer> integerOperation = new IntegerOperation();
 

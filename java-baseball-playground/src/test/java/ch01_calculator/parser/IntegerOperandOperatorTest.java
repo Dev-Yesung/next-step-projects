@@ -7,7 +7,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class OperatorTest {
+import ch01_calculator.operator.IntegerOperator;
+
+class IntegerOperandOperatorTest {
 
 	@DisplayName("지원하는 연산자일 경우 예외가 발생하지 않는다.")
 	@ValueSource(strings = {"+", "-", "*", "-"})
@@ -15,7 +17,7 @@ class OperatorTest {
 	void success_if_operator_is_valid(String operator) {
 		// when -> then
 		assertThatNoException()
-			.isThrownBy(() -> Operator.validate(operator));
+			.isThrownBy(() -> IntegerOperator.validate(operator));
 	}
 
 	@DisplayName("지원하지 않는 연산자일 경우 예외가 발생한다.")
@@ -25,7 +27,7 @@ class OperatorTest {
 	@ParameterizedTest
 	void fail_if_operator_is_not_valid(String operator) {
 		// when -> then
-		assertThatThrownBy(() -> Operator.validate(operator))
+		assertThatThrownBy(() -> IntegerOperator.validate(operator))
 			.isInstanceOf(RuntimeException.class);
 	}
 }

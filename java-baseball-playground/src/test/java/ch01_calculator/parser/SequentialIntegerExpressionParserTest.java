@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.List;
 import java.util.stream.Stream;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -14,9 +13,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import ch01_calculator.dto.ParsedExpressions;
 
-class SequentialExpressionParserTest {
+class SequentialIntegerExpressionParserTest {
 
-	private ExpressionParser expressionParser = new SequentialExpressionParser();
+	private ExpressionParser expressionParser = new SequentialIntegerExpressionParser();
 
 	@DisplayName("형식에 맞는 올바른 연산식이 들어왔을 경우 순차적인 파싱에 성공한다.")
 	@MethodSource("provideExpressionAndExpectedValue")

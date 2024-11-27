@@ -27,7 +27,7 @@ public enum Mode {
 	public static Mode resolve(final String command) {
 		final Integer number = Integer.valueOf(command);
 		return Optional.ofNullable(valueToEnum.get(number))
-			.orElseThrow(() -> new RuntimeException("지원하지 않는 명령입니다."));
+			.orElseThrow(() -> new RuntimeException("[ERROR] 지원하지 않는 명령입니다."));
 	}
 
 	public int getValue() {

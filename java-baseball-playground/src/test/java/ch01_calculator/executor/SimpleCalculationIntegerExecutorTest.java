@@ -11,9 +11,9 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import ch01_calculator.dto.ParsedExpressions;
-import ch01_calculator.operation.IntegerOperation;
+import ch01_calculator.domain.operation.IntegerOperation;
 
-class SimpleCalculationExecutorTest {
+class SimpleCalculationIntegerExecutorTest {
 
 	private final CalculationExecutor calculationExecutor
 		= new SimpleCalculationExecutor(new IntegerOperation());
