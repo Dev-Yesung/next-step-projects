@@ -2,58 +2,57 @@ package ch01_calculator.processor;
 
 import static ch01_calculator.text.InfoText.*;
 
-import ch01_calculator.executor.IntegerExecutor;
-import ch01_calculator.hanlder.input.InputHandler;
-import ch01_calculator.hanlder.output.OutputHandler;
-import ch01_calculator.operand.IntegerOperand;
+import java.util.Scanner;
+
+import ch01_calculator.mode.Mode;
 import ch01_calculator.parser.ExpressionParser;
 
-public class Processor {
+public class Processor implements InputHandler, OutputHandler {
 
-	private final InputHandler inputHandler;
-	private final OutputHandler outputHandler;
 	private final ExpressionParser expressionParser;
-	private boolean isRunning = true;
+	private final Scanner scanner;
 
-	public Processor(
-		InputHandler inputHandler,
-		OutputHandler outputHandler,
-		ExpressionParser expressionParser
-	) {
-		this.inputHandler = inputHandler;
-		this.outputHandler = outputHandler;
+	public Processor(ExpressionParser expressionParser, Scanner scanner) {
 		this.expressionParser = expressionParser;
+		this.scanner = scanner;
 	}
 
-	public void run() {
-		outputHandler.displayMessage(APPLICATION_START_UP_MESSAGE);
-		do {
-			outputHandler.displayMessage(COMMAND_EXPLAIN_MESSAGE);
-			final String command = inputHandler.readInput();
-			final Mode mode = Mode.resolve(command);
-			outputHandler.displayMessage(mode.getMessage());
-			switch (mode) {
-				case Mode.SIMPLE_CALCULATOR -> calculateSimple();
-				case Mode.END -> terminateProcessor();
-			}
-		} while (isRunning);
-	}
-
-	private void calculateSimple() {
-		outputHandler.displayMessage(EXPRESSION_ENTER_MESSAGE);
+	public boolean run() {
+		displayMessage(APPLICATION_START_UP_MESSAGE);
 		try {
-			final String expression = inputHandler.readInput();
-			final IntegerExecutor executor = expressionParser.parse(expression);
-			final IntegerOperand result = executor.execute();
+			displayMessage(COMMAND_EXPLAIN_MESSAGE);
+			final String command = readInput();
+			final Mode mode = Mode.resolve(command);
 
-			outputHandler.displayOutput(expression, result.toString());
+			return mode.execute(this, this, expressionParser);
 		} catch (RuntimeException e) {
-			outputHandler.displayError(e.getMessage());
+			displayError(e.getMessage());
 		}
+
+		return Mode.APPLICATION_ACTIVE;
 	}
 
-	private void terminateProcessor() {
-		outputHandler.displayMessage(Mode.END.getMessage());
-		isRunning = false;
+	@Override
+	public String readInput() {
+		final String input = scanner.nextLine();
+		if (input == null || input.isEmpty() || input.isBlank()) {
+			throw new RuntimeException("[ERROR] 식은 비어있을 수 없습니다. 올바르게 입력해주세요.");
+		}
+		return input;
+	}
+
+	@Override
+	public void displayMessage(String message) {
+		System.out.printf("%s%n", message);
+	}
+
+	@Override
+	public void displayOutput(String expression, String output) {
+		System.out.printf("Output : %s = %s%n", expression, output);
+	}
+
+	@Override
+	public void displayError(String errorMessage) {
+		System.out.printf("%s%n", errorMessage);
 	}
 }

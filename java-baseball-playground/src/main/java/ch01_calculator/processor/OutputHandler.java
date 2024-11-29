@@ -1,4 +1,4 @@
-package ch01_calculator.hanlder.output;
+package ch01_calculator.processor;
 
 public interface OutputHandler {
 

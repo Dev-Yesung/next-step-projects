@@ -1,9 +1,9 @@
 package ch01_calculator.parser;
 
-import ch01_calculator.executor.IntegerExecutor;
+import ch01_calculator.mode.executor.Executor;
 
 @FunctionalInterface
 public interface ExpressionParser {
 
-	IntegerExecutor parse(String expression);
+	Executor parse(String expression);
 }

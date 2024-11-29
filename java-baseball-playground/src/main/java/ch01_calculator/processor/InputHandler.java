@@ -1,4 +1,4 @@
-package ch01_calculator.hanlder.input;
+package ch01_calculator.processor;
 
 public interface InputHandler {
 

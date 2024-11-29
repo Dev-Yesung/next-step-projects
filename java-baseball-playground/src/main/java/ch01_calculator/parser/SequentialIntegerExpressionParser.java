@@ -4,14 +4,15 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import ch01_calculator.executor.IntegerExecutor;
+import ch01_calculator.mode.executor.Executor;
+import ch01_calculator.mode.executor.IntegerExecutor;
 import ch01_calculator.operand.IntegerOperand;
 import ch01_calculator.operator.IntegerOperator;
 
 public class SequentialIntegerExpressionParser implements ExpressionParser {
 
 	@Override
-	public IntegerExecutor parse(final String expression) {
+	public Executor parse(final String expression) {
 		final String[] tokens = expression.split(" ");
 		if (isEven(tokens.length) || tokens.length == 1) {
 			throw new IllegalArgumentException("[ERROR] 입력된 식의 형태가 올바르지 않습니다.");

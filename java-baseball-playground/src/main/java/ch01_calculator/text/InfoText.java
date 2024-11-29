@@ -2,7 +2,10 @@ package ch01_calculator.text;
 
 public final class InfoText {
 
-	public static final String APPLICATION_START_UP_MESSAGE = "Java 계산기에 오신 것을 환영합니다!";
+	public static final String APPLICATION_START_UP_MESSAGE = """
+		
+		Java 계산기에 오신 것을 환영합니다!
+		""";
 
 	public static final String COMMAND_EXPLAIN_MESSAGE = """
 		아래의 모드 중 하나를 선택해주세요.
