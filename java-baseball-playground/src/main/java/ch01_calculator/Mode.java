@@ -1,4 +1,4 @@
-package ch01_calculator.mode;
+package ch01_calculator;
 
 import static ch01_calculator.text.InfoText.*;
 
@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import ch01_calculator.mode.executor.Executor;
+import ch01_calculator.parser.executor.Executor;
 import ch01_calculator.operand.Operand;
 import ch01_calculator.parser.ExpressionParser;
 import ch01_calculator.processor.InputHandler;

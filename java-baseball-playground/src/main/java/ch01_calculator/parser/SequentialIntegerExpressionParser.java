@@ -4,8 +4,8 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import ch01_calculator.mode.executor.Executor;
-import ch01_calculator.mode.executor.IntegerExecutor;
+import ch01_calculator.parser.executor.Executor;
+import ch01_calculator.parser.executor.IntegerExecutor;
 import ch01_calculator.operand.IntegerOperand;
 import ch01_calculator.operator.IntegerOperator;
 

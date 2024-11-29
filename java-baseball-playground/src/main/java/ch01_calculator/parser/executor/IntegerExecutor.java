@@ -1,4 +1,4 @@
-package ch01_calculator.mode.executor;
+package ch01_calculator.parser.executor;
 
 import java.util.Deque;
 import java.util.Queue;

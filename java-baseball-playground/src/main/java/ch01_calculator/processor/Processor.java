@@ -4,7 +4,7 @@ import static ch01_calculator.text.InfoText.*;
 
 import java.util.Scanner;
 
-import ch01_calculator.mode.Mode;
+import ch01_calculator.Mode;
 import ch01_calculator.parser.ExpressionParser;
 
 public class Processor implements InputHandler, OutputHandler {
