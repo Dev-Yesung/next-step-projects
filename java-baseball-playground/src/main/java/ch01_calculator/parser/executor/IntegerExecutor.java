@@ -21,18 +21,6 @@ public class IntegerExecutor implements Executor {
 		this.operators = operators;
 	}
 
-	private void validate(
-		final Deque<IntegerOperand> operands,
-		final Queue<IntegerOperator> operators
-	) {
-		if (operands.size() < 2) {
-			throw new IllegalArgumentException("[ERROR] 피연산자가 적어도 2개 이상이어야 합니다.");
-		}
-		if (operators.size() != operands.size() - 1) {
-			throw new IllegalArgumentException("[ERROR] 연산자와 피연산자의 개수가 맞지 않습니다.");
-		}
-	}
-
 	@Override
 	public Operand<Integer> execute() {
 		while (!operators.isEmpty()) {
@@ -45,10 +33,18 @@ public class IntegerExecutor implements Executor {
 			operands.offerFirst(result);
 		}
 
-		if (operands.size() != 1) {
-			throw new RuntimeException("[ERROR] 연산 중에 오류가 발생했습니다.");
-		}
-
 		return operands.removeFirst();
+	}
+
+	private void validate(
+		final Deque<IntegerOperand> operands,
+		final Queue<IntegerOperator> operators
+	) {
+		if (operands.size() < 2) {
+			throw new IllegalArgumentException("[ERROR] 피연산자가 적어도 2개 이상이어야 합니다.");
+		}
+		if (operators.size() != operands.size() - 1) {
+			throw new IllegalArgumentException("[ERROR] 연산자와 피연산자의 개수가 맞지 않습니다.");
+		}
 	}
 }
