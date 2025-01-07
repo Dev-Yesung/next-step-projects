@@ -8,14 +8,27 @@ import ch01_calculator.processor.Processor;
 
 public class CalculatorApplication {
 
-	public static void main(String[] args) {
-		ExpressionParser expressionParser = new SequentialIntegerExpressionParser();
-		Scanner scanner = new Scanner(System.in);
-		Processor processor = new Processor(expressionParser, scanner);
+	private final Processor processor;
 
+	public CalculatorApplication(Processor processor) {
+		this.processor = processor;
+	}
+
+	public void run() {
 		boolean isApplicationActive;
 		do {
 			isApplicationActive = processor.run();
 		} while (isApplicationActive);
+	}
+
+	public static void main(String[] args) {
+		Processor processor = createProcessor();
+		new CalculatorApplication(processor).run();
+	}
+
+	private static Processor createProcessor() {
+		ExpressionParser expressionParser = new SequentialIntegerExpressionParser();
+		Scanner scanner = new Scanner(System.in);
+		return new Processor(expressionParser, scanner);
 	}
 }

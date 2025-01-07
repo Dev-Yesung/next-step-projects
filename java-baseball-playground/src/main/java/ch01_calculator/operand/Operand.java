@@ -1,5 +1,7 @@
 package ch01_calculator.operand;
 
+import java.util.StringJoiner;
+
 public abstract class Operand<T> {
 
 	protected final T value;
@@ -10,7 +12,12 @@ public abstract class Operand<T> {
 
 	protected abstract T parse(String input);
 
-	public abstract String toString();
+	@Override
+	public String toString() {
+		return new StringJoiner(", ", Operand.class.getSimpleName() + "[", "]")
+			.add("value=" + value)
+			.toString();
+	}
 
 	public T getValue() {
 		return value;
