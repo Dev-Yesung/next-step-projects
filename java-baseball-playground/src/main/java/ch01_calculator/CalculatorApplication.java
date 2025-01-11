@@ -14,13 +14,6 @@ public class CalculatorApplication {
 		this.processor = processor;
 	}
 
-	public void run() {
-		boolean isApplicationActive;
-		do {
-			isApplicationActive = processor.run();
-		} while (isApplicationActive);
-	}
-
 	public static void main(String[] args) {
 		Processor processor = createProcessor();
 		new CalculatorApplication(processor).run();
@@ -30,5 +23,12 @@ public class CalculatorApplication {
 		ExpressionParser expressionParser = new SequentialIntegerExpressionParser();
 		Scanner scanner = new Scanner(System.in);
 		return new Processor(expressionParser, scanner);
+	}
+
+	public void run() {
+		boolean isApplicationActive;
+		do {
+			isApplicationActive = processor.run();
+		} while (isApplicationActive);
 	}
 }
