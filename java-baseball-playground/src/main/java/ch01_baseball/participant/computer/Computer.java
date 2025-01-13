@@ -1,8 +1,12 @@
 package ch01_baseball.participant.computer;
 
-public interface Computer {
+import ch01_baseball.number.BaseBallNumbers;
+import ch01_baseball.participant.AutoNumberGenerator;
+import ch01_baseball.participant.Initializer;
 
-	void initialize();
+public interface Computer extends Initializer, AutoNumberGenerator {
 
 	void generateBaseBallNumbers();
+
+	BaseBallNumbers getBaseBallNumbers();
 }

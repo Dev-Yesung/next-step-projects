@@ -1,8 +1,11 @@
 package ch01_baseball.participant.player;
 
-public interface Player {
+import ch01_baseball.number.BaseBallNumbers;
+import ch01_baseball.participant.Initializer;
 
-	void initialize();
+public interface Player extends Initializer {
 
-	void generateBaseBallNumbers(String number);
+	void generateBaseBallNumbers(String value);
+
+	BaseBallNumbers getBaseBallNumbers();
 }
